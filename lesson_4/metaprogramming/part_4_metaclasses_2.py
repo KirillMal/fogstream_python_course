@@ -22,6 +22,16 @@ print(type.__class__)
 print(type.__bases__)
 # (<class 'object'>,)
 
+# Python 2.x
+class Old:
+    pass
+old = Old()
+type(old)  # type <instance>
+
+class New(object):
+    pass
+new = New()
+type(new)  # type <New>
 
 """
 Объекты-типы - представление абстрактных типов данных

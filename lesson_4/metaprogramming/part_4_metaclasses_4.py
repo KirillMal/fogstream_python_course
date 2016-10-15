@@ -3,7 +3,7 @@
 """
 from django.db import models
 
-
+# в models.Model переопределены метаклассы
 class Person(models.Model):
     name = models.CharField('Имя', max_length=50)
     age = models.IntegerField()

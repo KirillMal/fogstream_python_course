@@ -9,5 +9,10 @@ virtual environment (оно же virtualenv, оно же venv) - новый ин
 установленными библиотеками, зависимостями, определенными настройками, переменными и т.д.
 
 
+$ apt-get install python-virtualenv
+
+$ virtualenv my_xls_project
+
+
 
 """

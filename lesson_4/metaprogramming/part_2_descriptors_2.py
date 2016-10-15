@@ -1,10 +1,10 @@
 class WeakDescriptor:
     """Слабый дескриптор"""
-    def __get__(self, instance, owner):
+    def __get__(self, instance, cls):
         print('вызывался дескриптор __get__')
         print(self)
         print(instance)
-        print(owner)
+        print(cls)
         return 'WeakValue'
 
 class A:

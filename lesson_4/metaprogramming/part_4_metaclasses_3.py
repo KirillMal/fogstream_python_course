@@ -20,8 +20,14 @@ class Singleton(type):
             raise Exception('Нельзя больше создавать объектов этого класса!!!')
         return cls.instance
 
-class ASingleton(metaclass=Singleton):
+class A:
     pass
+type ('A', (), {})
+
+class ASingleton(metaclass=Singleton):
+    var = 'var'
+
+Singleton('ASingleton', (), {'var': 'var'})
 
 
 a = ASingleton()

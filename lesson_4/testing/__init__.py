@@ -2,9 +2,9 @@
 Тесты
 
 TDD - Test Driven Development
-TDD - ?
+TDD - Try Driven Development
 
-PDD - ? :)
+PDD - Pain Driven Development :)
 
 
 https://docs.python.org/3/library/unittest.html

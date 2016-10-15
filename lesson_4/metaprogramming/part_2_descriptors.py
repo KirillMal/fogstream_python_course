@@ -13,17 +13,19 @@ a, b = ClassA(), ClassB()
 
 a.var
 # 100500
-getattr(a, 'var')  # ?
-getattr(a, 'other_var', None)  # ?
-getattr(a, 'another_var', 33)  # ?
+getattr(a, 'var')  # 100500
+getattr(a, 'other_var', None)  # None
+getattr(a, 'my_favorite_var')  # AttributeError
+getattr(a, 'another_var', 33)  # 33
 
 a.x = 1
-print(a.x)  # ?
+print(a.x)  # 1
 setattr(a, 'x', 'XXX')
-print(a.x)  # ?
+print(a.x)  # XXX
 
 del a.x
 delattr(a, 'x')
+a.x  # AttributeError
 
 """
 Дескрипторы setattr и delattr взаимодействуют только с самим объектом a,

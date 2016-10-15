@@ -21,40 +21,32 @@ class TestStringMethods(unittest.TestCase):
             s.split(2)
 
 
-# class MyTestCase(unittest.TestCase):
-#     @unittest.skip("demonstrating skipping")
-#     def test_nothing(self):
-#         self.fail("shouldn't happen")
-#
-#     @unittest.skipIf(5 < 4,
-#                      "not supported in this library version")
-#     def test_format(self):
-#         # Tests that work for only a certain version of the library.
-#         pass
-#
-#     @unittest.skipUnless(sys.platform.startswith("win"), "requires Windows")
-#     def test_windows_support(self):
-#         # windows specific testing code
-#         pass
+class MyTestCase(unittest.TestCase):
+    @unittest.skip("demonstrating skipping")
+    def test_nothing(self):
+        self.fail("shouldn't happen")
 
-# class SimpleWidgetTestCase(unittest.TestCase):
-#     def setUp(self):
-#         self.widget = Widget('The widget')
-#
-#     def tearDown(self):
-#         self.widget.dispose()
+    @unittest.skipIf(5 < 1.4,
+                     "not supported in this library version")
+    def test_format(self):
+        # Tests that work for only a certain version of the library.
+        pass
+
+    @unittest.skipUnless(sys.platform.startswith("win"), "requires Windows")
+    def test_windows_support(self):
+        # windows specific testing code
+        pass
 
 
-# class NumbersTest(unittest.TestCase):
-#     def test_even(self):
-#         """
-#         Test that numbers between 0 and 5 are all even.
-#         """
-#         for i in range(0, 6):
-#             with self.subTest(i=i):
-#                 self.assertEqual(i % 2, 0)
+class SimpleWidgetTestCase(unittest.TestCase):
+    def setUp(self):
+        self.widget = Widget('The widget')
 
+    def is_equal(self):
+        self.assertEqual(1, 1)
 
+    def tearDown(self):
+        self.widget.dispose()
 
 
 if __name__ == '__main__':

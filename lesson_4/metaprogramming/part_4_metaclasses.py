@@ -19,6 +19,8 @@ class A:
 
 # Создание объекта-типа
 OtherClass = type('A', (), {'var': 111})
+OtherClass
+# __main__.A
 
 # Пример наследования классов
 class B(A):
@@ -26,7 +28,7 @@ class B(A):
         return 42
 
 
-type('B', (A,), {'foo': lambda self: 42})
+type('B', (A, ), {'foo': lambda self: 42})
 
 
 """

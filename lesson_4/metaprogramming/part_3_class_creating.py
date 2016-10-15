@@ -1,7 +1,8 @@
 # coding=utf-8
 
 class A:
-    pass
+    def __init__(self, var):
+        self.var = var
 a = A()  # Вызывается __new__, затем __init__
 
 
@@ -16,4 +17,6 @@ class B:
 
 
 b = B()
+# Создался объект
+# Проинициализировался объект
 
