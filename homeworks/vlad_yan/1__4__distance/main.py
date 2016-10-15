@@ -5,14 +5,16 @@ from collections import namedtuple
 point = namedtuple('Point', 'x, y')
 
 
+# Длинные читабельные имена функций это хорошо.
+# Короткие не очень читаьбельные - плохо
 def dist(a, b):
     """Calculate distance between two points: a and b."""
-    return math.sqrt((a.x - b.x)**2 + (a.y - b.y)**2)
+    return math.sqrt((a.x - b.x) ** 2 + (a.y - b.y) ** 2)
 
 
 def mycartesian_product(some_list):
     """Get cartesian product of a list with itself."""
-    pr = []
+    pr = []  # Плохое имя
     for ind, item1 in enumerate(some_list[:-1], start=1):
         for item2 in some_list[ind:]:
             pr.append((item1, item2))
@@ -26,6 +28,8 @@ def xy_from_file(filename):
         content = fobj.readlines()
 
     try:
+        # ValueError может быть пойман только в момент выполннеия float(number)
+        # Потому в try...except лучше заключить только его
         splited = [line.split() for line in content]
         points = [point(float(x), float(y)) for x, y in splited]
     except ValueError:
@@ -34,7 +38,7 @@ def xy_from_file(filename):
     return points
 
 
-def main(filename):
+def main(filename='test_file.txt'):
     """Main function."""
     points = xy_from_file(filename)
     cartesian_prod = mycartesian_product(points)
@@ -49,6 +53,7 @@ def main(filename):
 if __name__ == '__main__':
     parser = OptionParser()
     opts, args = parser.parse_args()
-
-    arg = args[0]
-    main(arg)
+    if not args:
+        main()
+    else:
+        main(args[0])
