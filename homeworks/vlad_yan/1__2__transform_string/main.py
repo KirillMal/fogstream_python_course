@@ -1,15 +1,26 @@
-# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-  Это не нужно. coding используется если мы пишем на 2 питоне
 import re
-from optparse import OptionParser
+from optparse import OptionParser  # deprecated lib
+
+"""
+Must read and use
+https://pythonworld.ru/osnovy/pep-8-rukovodstvo-po-napisaniyu-koda-na-python.html
+Как прочтешь - пройдись по всей домашке, приведи все к PEP8
+
+
+Must read 2
+https://docs.python.org/3/library/stdtypes.html#string-methods
+Встроенные функции надо знать
+"""
 
 
 def isurl(string):
     """Check whether the given string is a valid url address."""
     length = len(string)
-    if length < 8:
+    if length < 8:  # Почему 8? что за магическое число??
         return False
 
-    ind = string.find('http://')
+    ind = string.find('http://')  # str.startwith
     if ind != 0:
         ind = string.find('https://')
         if not (ind == 0 and length >= 9):
@@ -17,10 +28,10 @@ def isurl(string):
 
     return True
 
-
+# Не Pep8 название функции
 def isemail(string):
     """Check whether the given string is a valid email address."""
-    if len(string) < 5 or '@' not in string[1:-1]:
+    if len(string) < 5 or '@' not in string[1:-1]:  # Магические числа
         return False
     parts = string.split('@')
     if len(parts) != 2:
@@ -28,7 +39,7 @@ def isemail(string):
 
     part1, part2 = parts
 
-    if len(part2) < 3 or '.' not in part2[1:-1]:
+    if len(part2) < 3 or '.' not in part2[1:-1]:  # Магические числа
         return False
 
     another_parts = part2.split('.')
@@ -39,6 +50,7 @@ def isemail(string):
 
 
 def retrieve_spaces(string):
+    """Docstring???"""
     spaces = []
     if ' ' not in string:
         return spaces
@@ -66,8 +78,11 @@ def retrieve_spaces(string):
     return spaces
 
 
-def isnumber(char):
+def isnumber(char):  # .isdigit
     """Check whether char is a number."""
+    """
+    Упрости!! =) Создавать такие проверочные массивы - плохая идея
+    """
     for ch in ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']:
         if ch == char:
             return True
@@ -75,7 +90,7 @@ def isnumber(char):
     return False
 
 
-def islongnumber(string):
+def islongnumber(string):  # .isdigit
     """Check whether string is a N-figure number (N >= 3)."""
     if len(string) < 3:
         return False
@@ -107,9 +122,12 @@ def regex_transform(string):
 
 def simple_transform(string):
     words = string.split()
-    spaces = retrieve_spaces(string)
+    spaces = retrieve_spaces(string)  # Объясни идею с пробелами. Неочевидно, для чего их вычислять, собирать в массив и прочие манипуляции делать
 
     for ind, word in enumerate(words):
+        """
+        Лучше используй .replace. Встроенные же функции нужны
+        """
         if isurl(word):
             words[ind] = '[ссылка запрещена]'
             continue
@@ -122,7 +140,7 @@ def simple_transform(string):
 
         words[ind] = word.lower()
 
-    first_word = words[0]
+    first_word = words[0]  # .capitalize
     words[0] = first_word[0].upper() + first_word[1:]
 
     result = ''
@@ -155,3 +173,10 @@ if __name__ == '__main__':
     newstr = main(arg, useregex=False)
 
     print(newstr)
+
+
+"""
+Проверка на дурака
+Привести все к PEP8
+Использовать встроенные функции языка
+"""
